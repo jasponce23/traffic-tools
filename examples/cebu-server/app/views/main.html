@@ -33,7 +33,7 @@
 
     <link href="@{'/public/bootstrap/css/bootstrap-responsive.min.css'}" rel="stylesheet">
     
-    <title>Cebu Traffic</title>
+    <title>Seoul Open Traffic</title>
 
 	<script>
 	
@@ -47,7 +47,7 @@
 
 	<div class="navbar navbar-inverse navbar-fixed-top" id="header">
       <div class="navbar-inner">
-      	<a class="brand" href="/"><img style="margin-left: 10px;" src="/public/images/website_logo.png"/>&nbsp;Cebu Traffic</a>
+      	<a class="brand" href="/"><img style="margin-left: 10px;" src="/public/images/website_logo.png"/>&nbsp;Seoul Open Traffic</a>
         <div class="nav-collapse collapse">
         
         
@@ -78,7 +78,7 @@
             
 	           	#{secure.check 'citom'}
 	            	<li class="dropdown#{if page == 'citom'} active#{/if}">
-	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">CITOM Portal<b class="caret"></b></a>
+	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Agency Portal<b class="caret"></b></a>
 	            		<ul class="dropdown-menu">
 	            			<li><a href="@{Citom.incidents}">Traffic Alerts</a></li>
 	     		 			<li><a href="@{Citom.journey}">Journey Time Analysis</a></li>
