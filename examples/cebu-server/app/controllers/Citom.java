@@ -463,6 +463,8 @@ public static void alertsCsv(Boolean active, String filter, String fromDate, Str
             newAlert.title = alert.title;
 			newAlert.locationLat = alert.locationLat;
 			newAlert.locationLon = alert.locationLon;
+			newAlert.cite = alert.cite;
+			newAlert.address = alert.address;  
 			newAlert.description = alert.description;
 			newAlert.publicDescription = alert.publicDescription;
 			newAlert.type = alert.type;
@@ -499,6 +501,8 @@ public static void alertsCsv(Boolean active, String filter, String fromDate, Str
             updatedAlert.title = alert.title;
 			updatedAlert.locationLat = alert.locationLat;
 			updatedAlert.locationLon = alert.locationLon;
+			updatedAlert.cite = alert.cite;
+			updatedAlert.address = alert.address;
 			updatedAlert.description = alert.description;
 			updatedAlert.publicDescription = alert.publicDescription;
 			updatedAlert.type = alert.type;

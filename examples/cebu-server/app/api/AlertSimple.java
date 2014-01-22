@@ -23,7 +23,9 @@ public class AlertSimple {
     public String description;
 
     public String publicDescription;
-
+    public String cite;
+ public String address;
+   
     public String account;
 
     public List<AlertMessageSimple> messages;
@@ -44,6 +46,9 @@ public class AlertSimple {
 
         this.publicDescription = alert.publicDescription;
         this.publiclyVisible = alert.publiclyVisible;
+        this.cite = alert.cite;
+        this.address = alert.address;
+        
         
         if(shareAll) {
 	    	this.description = alert.description;

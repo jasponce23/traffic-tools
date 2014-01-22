@@ -1,13 +1,17 @@
 
-var AlertTypes = [{id: 'incident', name: 'Traffic Incident'},
-                  {id: 'event', name: 'Event'}, 
-                  {id: 'congestion', name: 'Congestion'},
-                  {id: 'roadclosed', name: 'Road Closed'},
-                  {id: 'enforcement', name: 'Traffic Enforcers'},
-                  {id: 'fire', name: 'Fire'},
-                  {id: 'trafficlight', name: 'Traffic Signal Problem'},
-                  {id: 'construction', name: 'Road Construction'},
-                  {id: 'flood', name: 'Flood'}];
+var AlertTypes = [{id: 'Homicide', name: 'Homicide'},
+                  {id: 'Physicalinjuries', name: 'Physical Injuries'}, 
+                  {id: 'Parricide', name: 'Parricide/Infanticide'},
+                  {id: 'Kidnapping', name: 'Kidnapping'},
+                  {id: 'Robbery', name: 'Robbery'},
+                  {id: 'Theft', name: 'Theft'},
+                  {id: 'Rape', name: 'Rape'},
+                  {id: 'Firearms', name: 'Firearms - Illegal Possession'},
+                  {id: 'Explosives', name: 'Explosives/Ammunitions- Illegal Possession'},
+                  {id: 'Murder', name: 'Murder'},
+                  {id: 'Drugs', name: 'Prohibited Drugs'},
+                  {id: 'Carnapping', name: 'Carnapping'},
+                  {id: 'Others', name: 'Other crimes'}];
 
 Handlebars.registerHelper('alert_options', function(test) {
     var ret = '';
@@ -56,6 +60,8 @@ var Alert = Backbone.Model.extend({
       publiclyVisible: null,
       locationLat: null,
       locationLon: null,
+      cite: null,
+      address: null,
       description: null,
       publicDescription: null,
       account: null
@@ -404,6 +410,8 @@ var AlertEditorView = Backbone.View.extend({
                     publiclyVisible: this.$("#publiclyVisible").is(':checked'),
                     locationLat: this.model.attributes.locationLat,
                     locationLon: this.model.attributes.locationLon,
+                    cite: this.$("#cite").val(),
+                    address: this.$("#address").val(),
                     description: this.$("#description").val(),
                     publicDescription: this.$("#publicDescription").val()
       };

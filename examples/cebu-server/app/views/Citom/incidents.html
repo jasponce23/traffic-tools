@@ -22,10 +22,17 @@
 		<br/>
 		<strong>Publicly Visible</strong> <input type="checkbox" id="publiclyVisible" {{#if publiclyVisible}}checked{{/if}}/>
 		<br/>
+		<strong>Cite Nr</strong><br/>
+		<textarea class="span11"  id="cite" placeholder="cite...">{{ cite }}</textarea>
+		
+		<strong>Address</strong><br/>
+		<textarea class="span11"  id="address" placeholder="address...">{{ address }}</textarea>
+		
 		<strong>CITOM Description</strong><br/>
 		<textarea class="span11"  id="description" placeholder="CITOM description...">{{ description }}</textarea>
 		<strong>Public Description</strong><br/>
-		<textarea class="span11" id="publicDescription" placeholder="Public description...">{{ publicDescription }}</textarea>
+		<textarea class="span11" id="publicDescription" placeholder="Public description...">{{ publicDescription }}</textarea> 
+		
 		
 	</div>
 
@@ -74,6 +81,9 @@
 	<h3><img src="/public/images/alert_icons/{{ type }}.png"> {{ title }}</h3>	
 	<strong>Type:</strong> {{alertType type}}<br/>
 	<strong>Publicly Visible:</strong> {{#if publiclyVisible}}Yes{{else}}No{{/if}}<br/>
+	<strong>Cite Nr:</strong> {{cite}}<br/>
+	<strong>Address:</strong> {{address}}<br/>
+	
 	<strong>Description:</strong> {{description}}<br/>
 	<strong>Public Description:</strong> {{publicDescription}}<br/>
 	<strong>Active From:</strong> {{formatDate activeFrom }}<br/>

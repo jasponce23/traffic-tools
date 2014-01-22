@@ -177,11 +177,11 @@ function updateIncidents()
 	{
 		var icon = null;
 		
-		if(indcidentData[incident].type == "incident")
+		if(indcidentData[incident].type == "Homicide")
 			icon = incidentIcon;
-		else if(indcidentData[incident].type == "flood")
+		else if(indcidentData[incident].type == "Physicalinjuries")
 			icon = floodIcon;
-		else if(indcidentData[incident].type == "fire")
+		else if(indcidentData[incident].type == "Parricide")
 			icon = fireIcon;
 		else if(indcidentData[incident].type == "trafficlight")
 			icon = trafficlightIcon;

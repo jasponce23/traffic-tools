@@ -20,12 +20,21 @@ public class Alert extends Model {
     
     public Double locationLat;
     public Double locationLon;
-    
+
+     /*public String address;
+     public String cite;
+    */
     @Column(columnDefinition="TEXT")
     public String description;
 
     @Column(columnDefinition="TEXT")
     public String publicDescription;
+    
+    @Column(columnDefinition="TEXT")
+    public String address;
+    
+    @Column(columnDefinition="TEXT")
+    public String cite;
     
     @ManyToOne
     public Account account;
