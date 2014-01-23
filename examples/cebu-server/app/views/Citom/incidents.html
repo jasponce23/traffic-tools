@@ -7,31 +7,36 @@
 <script id="incident-edit-tpl" type="text/html">
 <div class="well well-small">
 		
-	<strong>Create/Edit Alert</strong> 
+	<strong>Create/Edit Incident</strong> 
 
 	<hr style="margin: 5px 0;">
 
 	<div class="row-fluid">
-		<strong>Title</strong><br/>
+		<!--<strong>Title</strong><br/>
 		<input class="span11" type="text" id="title" value="{{ title }}" placeholder="Title..."/>
-		<strong>Type</strong><br/>
+		-->
+
+		<strong>Cite Nr</strong><br/>
+		<input class="span11" type="text" id="cite" value="{{ cite }}" placeholder="Cite Nr..."/>
+		<strong>Offense</strong><br/>
 		<select id="type" style="width:220px;">
 			{{alert_options type}}
 		</select>
-		<br/>
-		<br/>
-		<strong>Publicly Visible</strong> <input type="checkbox" id="publiclyVisible" {{#if publiclyVisible}}checked{{/if}}/>
-		<br/>
-		<strong>Cite Nr</strong><br/>
-		<textarea class="span11"  id="cite" placeholder="cite...">{{ cite }}</textarea>
-		
+		</br>
+		</br>
 		<strong>Address</strong><br/>
 		<textarea class="span11"  id="address" placeholder="address...">{{ address }}</textarea>
 		
-		<strong>CITOM Description</strong><br/>
-		<textarea class="span11"  id="description" placeholder="CITOM description...">{{ description }}</textarea>
-		<strong>Public Description</strong><br/>
-		<textarea class="span11" id="publicDescription" placeholder="Public description...">{{ publicDescription }}</textarea> 
+		
+
+		<strong>Brief Description</strong><br/>
+		<textarea class="span11" id="publicDescription" placeholder="Brief description...">{{ publicDescription }}</textarea> 
+		</br>
+
+		<strong>Publicly Visible</strong> <input type="checkbox" id="publiclyVisible" {{#if publiclyVisible}}checked{{/if}}/>
+		<br/>
+		<strong>PNP Description</strong><br/>
+		<textarea class="span11"  id="description" placeholder="PNP description...">{{ description }}</textarea>
 		
 		
 	</div>

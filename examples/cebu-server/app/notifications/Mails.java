@@ -11,7 +11,7 @@ public class Mails extends Mailer {
 
    public static void restPassword(Account account) {
    
-      setFrom("Cebu Traffic <cebutrafficmailer@gmail.com>");
+      setFrom("PNP Crime Mapping <cebutrafficmailer@gmail.com>");
       setSubject("Your password has been reset");
       
       addRecipient(account.email);

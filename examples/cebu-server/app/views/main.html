@@ -33,7 +33,7 @@
 
     <link href="@{'/public/bootstrap/css/bootstrap-responsive.min.css'}" rel="stylesheet">
     
-    <title>Cebu Traffic</title>
+    <title>PNP Crime Mapping</title>
 
 	<script>
 	
@@ -47,7 +47,7 @@
 
 	<div class="navbar navbar-inverse navbar-fixed-top" id="header">
       <div class="navbar-inner">
-      	<a class="brand" href="/"><img style="margin-left: 10px;" src="/public/images/website_logo.png"/>&nbsp;Cebu Traffic</a>
+      	<a class="brand" href="/"><img style="margin-left: 10px;" src="/public/images/website_logo.png"/>&nbsp;PNP Crime Mapping</a>
         <div class="nav-collapse collapse">
         
         
@@ -78,16 +78,19 @@
             
 	           	#{secure.check 'citom'}
 	            	<li class="dropdown#{if page == 'citom'} active#{/if}">
-	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">CITOM Portal<b class="caret"></b></a>
+	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mapping<b class="caret"></b></a>
 	            		<ul class="dropdown-menu">
-	            			<li><a href="@{Citom.incidents}">Traffic Alerts</a></li>
-	     		 			<li><a href="@{Citom.journey}">Journey Time Analysis</a></li>
-	     		 			<li><a href="@{Citom.conditions}">Current Traffic Conditions</a></li>
+	            			<li><a href="@{Citom.incidents}">Incident Entry</a></li>
+	     		 			<!--   		 			<li><a href="@{Citom.journey}">Journey Time Analysis</a></li>
+	     		 			<li><a href="@{Citom.conditions}">Current Traffic Conditions</a></li> 
+	     		 		-->
+
 	     		 			<!--  <li><a href="@{Citom.area}">Area Analysis</a></li> -->
 	    				</ul>
 	    			</li>
 	   			#{/secure.check}
               
+              <!--
 	            #{secure.check 'taxi'}
 	            	<li class="dropdown#{if page == 'taxi'} active#{/if}">
 	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Taxi Dispatch<b class="caret"></b></a>
@@ -97,7 +100,9 @@
 	    				</ul>
 	            	
 	            	</li>
-	            #{/secure.check}
+
+	            #{/secure.check} -->
+
 	            #{secure.check 'admin'}
 	            	<li class="dropdown#{if page == 'admin'} active#{/if}">
 	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>

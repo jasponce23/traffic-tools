@@ -500,6 +500,7 @@ public static void alertsCsv(Boolean active, String filter, String fromDate, Str
             
             updatedAlert.title = alert.title;
 			updatedAlert.locationLat = alert.locationLat;
+			
 			updatedAlert.locationLon = alert.locationLon;
 			updatedAlert.cite = alert.cite;
 			updatedAlert.address = alert.address;
