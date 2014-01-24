@@ -6,79 +6,98 @@ var overlays = new L.LayerGroup();
 
 var newMarker = null;
 
-var eventIcon = L.icon({
-	iconUrl: '/public/images/event.png',
+var murderIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/murder.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
-var cautionIcon = L.icon({
-	iconUrl: '/public/images/caution.png',
+var homicideIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/homicide.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
-var closedroadIcon = L.icon({
-	iconUrl: '/public/images/closedroad.png',
+var parricideIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/closedroad.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
-var enforcementIcon = L.icon({
-	iconUrl: '/public/images/enforcement.png',
+var physicalinjuriesIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/physicalinjuries.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
-var fireIcon = L.icon({
-	iconUrl: '/public/images/fire.png',
+var kidnappingIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/kidnapping.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
-var fireIcon = L.icon({
-	iconUrl: '/public/images/fire.png',
+var robberyIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/robbery.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
-var trafficlightIcon = L.icon({
-	iconUrl: '/public/images/trafficlight.png',
+var theftIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/trafficlight.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
-var constructionIcon = L.icon({
-	iconUrl: '/public/images/construction.png',
+var rapeIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/rape.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
-var incidentIcon = L.icon({
-	iconUrl: '/public/images/caraccident.png',
+var firearmsIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/firearms.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
 
-var floodIcon = L.icon({
-	iconUrl: '/public/images/flood.png',
+var explosivesIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/explosives.png',
+    iconSize: [32, 37],
+    iconAnchor: [16, 37],
+    popupAnchor: [0, -37]
+});
+var carnappingIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/carnapping.png',
+    iconSize: [32, 37],
+    iconAnchor: [16, 37],
+    popupAnchor: [0, -37]
+});
+var drugsIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/drugs.png',
+    iconSize: [32, 37],
+    iconAnchor: [16, 37],
+    popupAnchor: [0, -37]
+});
+var othersIcon = L.icon({
+	iconUrl: '/public/images/crime_mapping_icons/others.png',
     iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
 
-var mbAttrib = 'Traffic overlay powered by OpenPlans Vehicle Tracking Tools, Map tiles &copy; Mapbox (terms).';
+var mbAttrib = 'Powered by ITMS &copy; Mapbox (terms).';
+//var mbAttrib = 'Traffic overlay powered by OpenPlans Vehicle Tracking Tools, Map tiles &copy; Mapbox (terms).';
 var mbOptions = {
   maxZoom : 17,
   attribution : mbAttrib
@@ -176,25 +195,34 @@ function updateIncidents()
 	for(var incident in indcidentData)
 	{
 		var icon = null;
+
 		
-		if(indcidentData[incident].type == "Homicide")
-			icon = incidentIcon;
-		else if(indcidentData[incident].type == "Physicalinjuries")
-			icon = floodIcon;
+		if(indcidentData[incident].type == "Murder")
+			icon = murderIcon;
+		else if(indcidentData[incident].type == "Homicide")
+			icon = homicideIcon;
 		else if(indcidentData[incident].type == "Parricide")
-			icon = fireIcon;
-		else if(indcidentData[incident].type == "trafficlight")
-			icon = trafficlightIcon;
-		else if(indcidentData[incident].type == "enforcement")
-			icon = enforcementIcon;
-		else if(indcidentData[incident].type == "congestion")
-			icon = cautionIcon;
-		else if(indcidentData[incident].type == "construction")
-			icon = constructionIcon;
-		else if(indcidentData[incident].type == "roadclosed")
-			icon = closedroadIcon;
-		else if(indcidentData[incident].type == "event")
-			icon = eventIcon;
+			icon = parricideIcon;
+		else if(indcidentData[incident].type == "Physicalinjuries")
+			icon = physicalinjuriesIcon;
+		else if(indcidentData[incident].type == "Kidnapping")
+			icon = kidnappingIcon;
+		else if(indcidentData[incident].type == "Robbery")
+			icon = robberyIcon;
+		else if(indcidentData[incident].type == "Theft")
+			icon = theftIcon;
+		else if(indcidentData[incident].type == "Rape")
+			icon = rapeIcon;
+		else if(indcidentData[incident].type == "Firearms")
+			icon = firearmsIcon;
+		else if(indcidentData[incident].type == "Explosives")
+			icon = explosivesIcon;
+		else if(indcidentData[incident].type == "Carnapping")
+			icon = carnappingIcon;
+		else if(indcidentData[incident].type == "Drugs")
+			icon = drugsIcon;
+		else if(indcidentData[incident].type == "Others")
+			icon = othersIcon;
 		else
 			continue;
 		

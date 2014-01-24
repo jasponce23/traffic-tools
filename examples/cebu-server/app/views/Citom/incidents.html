@@ -19,7 +19,7 @@
 		<strong>Cite Nr</strong><br/>
 		<input class="span11" type="text" id="cite" value="{{ cite }}" placeholder="Cite Nr..."/>
 		<strong>Offense</strong><br/>
-		<select id="type" style="width:220px;">
+		<select id="type" style="width:280px;">
 			{{alert_options type}}
 		</select>
 		</br>
@@ -31,10 +31,13 @@
 
 		<strong>Brief Description</strong><br/>
 		<textarea class="span11" id="publicDescription" placeholder="Brief description...">{{ publicDescription }}</textarea> 
-		</br>
+		
 
-		<strong>Publicly Visible</strong> <input type="checkbox" id="publiclyVisible" {{#if publiclyVisible}}checked{{/if}}/>
-		<br/>
+		<!--<strong>Publicly Visible</strong>  -->
+
+		<input type="hidden"  value= checked   id="publiclyVisible" {{ publiclyVisible }} checked />
+		<!--<input type="checkbox"      id="publiclyVisible"  {{#if publiclyVisible}}checked{{/if}}/> -->
+		
 		<strong>PNP Description</strong><br/>
 		<textarea class="span11"  id="description" placeholder="PNP description...">{{ description }}</textarea>
 		
@@ -44,21 +47,25 @@
 	<div class="row-fluid">
 		
 		<div class="span6">
-			<strong>From</strong><br/>
+			<strong>Date / Time Committed </strong><br/>
 				
 			<div class="input-append date" id="datepickerFrom">
 			  <input class="span8" size="16" type="text">
 			  <span class="add-on"><i class="icon-th"></i></span>
+
+		
+
 			</div>
 
-			<div  class="input-append bootstrap-timepicker">
+		<div  class="input-append bootstrap-timepicker">
 		        <input  class="span8" type="text" class="input-small" id="timepickerFrom">
 		        <span class="add-on"><i class="icon-time"></i></span>
-		    </div>
+		    </div> 
+
 		    <button  class="btn btn-mini" id="fromNow">Now</button>
 		</div>
 
-		<div class="span6">
+		<!-- <div class="span6">
 			<strong>To</strong> 
 			<div class="input-append date" id="datepickerTo">
 			  <input class="span8" size="16" type="text" >
@@ -70,9 +77,11 @@
 		        <input  class="span8"type="text" class="input-small" id="timepickerTo">
 		        <span class="add-on"><i class="icon-time"></i></span>
 		    </div>
+
 		    <button  class="btn btn-mini" id="toNow">Now</button>
 		    <button  class="btn btn-mini" id="toClear">Clear</button>
 	    </div>
+	    -->
 	</div>
     
 	<hr style="margin: 5px 0;">

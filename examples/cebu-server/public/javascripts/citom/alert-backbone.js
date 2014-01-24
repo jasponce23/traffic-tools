@@ -1,16 +1,17 @@
 
-var AlertTypes = [{id: 'Homicide', name: 'Homicide'},
+var AlertTypes = [
+                  {id: 'Murder', name: 'Murder'},
+                {id: 'Homicide', name: 'Homicide'},
+                {id: 'Parricide', name: 'Parricide/Infanticide'},
                   {id: 'Physicalinjuries', name: 'Physical Injuries'}, 
-                  {id: 'Parricide', name: 'Parricide/Infanticide'},
                   {id: 'Kidnapping', name: 'Kidnapping'},
                   {id: 'Robbery', name: 'Robbery'},
                   {id: 'Theft', name: 'Theft'},
                   {id: 'Rape', name: 'Rape'},
                   {id: 'Firearms', name: 'Firearms - Illegal Possession'},
                   {id: 'Explosives', name: 'Explosives/Ammunitions- Illegal Possession'},
-                  {id: 'Murder', name: 'Murder'},
-                  {id: 'Drugs', name: 'Prohibited Drugs'},
                   {id: 'Carnapping', name: 'Carnapping'},
+                   {id: 'Drugs', name: 'Prohibited Drugs'},
                   {id: 'Others', name: 'Other crimes'}];
 
 Handlebars.registerHelper('alert_options', function(test) {
@@ -415,6 +416,8 @@ var AlertEditorView = Backbone.View.extend({
                     description: this.$("#description").val(),
                     publicDescription: this.$("#publicDescription").val()
       };
+
+       //publiclyVisible: this.$("#publiclyVisible").is(':checked'),
 
       if(this.model.id)
       {
