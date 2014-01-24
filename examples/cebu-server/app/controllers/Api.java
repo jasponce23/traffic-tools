@@ -69,12 +69,12 @@ public class Api extends Controller {
 
 	static public Integer CURRENT_APP_VERSION = 1;
 	
-	public static DistanceCache distanceCache = new DistanceCache();
+	public static DistanceCache distanceCache; // = new DistanceCache();
 	
-	static StreetVelocityCache edgeVelocities = new StreetVelocityCache();
+	static StreetVelocityCache edgeVelocities; // = new StreetVelocityCache();
 	
 	
-	public static TrafficGraph graph = new TrafficGraph(Play.configuration.getProperty("application.otpGraphPath"));
+	public static TrafficGraph graph;// = new TrafficGraph(Play.configuration.getProperty("application.otpGraphPath"));
 		
 	public static TrafficGraph getGraph() {
 		return graph;
