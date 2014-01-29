@@ -7,8 +7,10 @@
 <script id="incident-view-popup-tpl" type="text/html">
 <div>
 	<h3><img src="/public/images/alert_icons/{{ type }}.png"> {{ title }}</h3>	
-	<strong>Type:</strong> {{alertType type}}<br/>
-	<strong>Description:</strong> {{publicDescription}}<br/>
+	<strong>Cite Nr:</strong> {{cite}}<br/>
+	<strong>Offense:</strong> {{alertType type}}<br/>
+	<strong>Date/Time Committed:</strong> {{formatDate activeFrom}}<br/>
+	<!-- <strong>Brief Description:</strong> {{publicDescription}}<br/> -->
 </div>
 </script>
 

@@ -110,15 +110,14 @@ function isAlphanumeric(elem, helperMsg){
 <script id="incident-view-popup-tpl" type="text/html">
 <div>
 	<h3><img src="/public/images/alert_icons/{{ type }}.png"> {{ title }}</h3>	
-	<strong>Type:</strong> {{alertType type}}<br/>
-	<strong>Publicly Visible:</strong> {{#if publiclyVisible}}Yes{{else}}No{{/if}}<br/>
 	<strong>Cite Nr:</strong> {{cite}}<br/>
+	<strong>Offense:</strong> {{alertType type}}<br/>
+	<!--<strong>Publicly Visible:</strong> {{#if publiclyVisible}}Yes{{else}}No{{/if}}<br/> -->
 	<strong>Address:</strong> {{address}}<br/>
-	
-	<strong>Description:</strong> {{description}}<br/>
-	<strong>Public Description:</strong> {{publicDescription}}<br/>
-	<strong>Active From:</strong> {{formatDate activeFrom }}<br/>
-	<strong>Active To:</strong> {{formatDate activeTo }}<br/>
+	<strong>Brief Description:</strong> {{publicDescription}}<br/>
+	<strong>PNP Remarks:</strong> {{description}}<br/>
+	<strong>Date/Time Committed:</strong> {{formatDate activeFrom }}<br/>
+	<!--<strong>Active To:</strong> {{formatDate activeTo }}<br/> -->
 	{{#if messages }}
 		<strong>Messages:</strong>
 		<div  class="row-fluid" style="max-height: 100px; overflow:auto;">
@@ -136,11 +135,13 @@ function isAlphanumeric(elem, helperMsg){
 	{{/if}}	
 	
 
-	<textarea id="message" placeholder="Message..."></textarea>
-	<br/>
-
-	<button  class="btn pull-right" id="editAlert">Edit Alert</button>
-	<button  class="btn btn-primary" id="sendMessage">Save Message</button>
+	<!-- <textarea id="message" placeholder="Message..."></textarea>
+	<br/> 
+<button  class="btn btn-primary" id="sendMessage">Save Message</button>
+-->
+	<button  class="btn pull-right" id="editAlert">Edit Incident</button>
+	<br/> 
+	<br/> 
 </div>
 </script>
 
