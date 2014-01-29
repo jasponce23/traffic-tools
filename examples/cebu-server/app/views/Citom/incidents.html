@@ -4,10 +4,27 @@
 
 <style>.alertdrop.select2-container .select2-results {max-height: 300px;}</style>
 
+<script type='text/javascript'>
+
+function isAlphanumeric(elem, helperMsg){
+	var alphaExp = /^[0-9a-zA-Z]+$/;
+	if(elem.value.match(alphaExp)){
+		return true;
+	}else{
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}
+}
+
+</script>
+
+
+
 <script id="incident-edit-tpl" type="text/html">
 <div class="well well-small">
 		
-	<strong>Create/Edit Incident</strong> 
+	<strong><font color="blue"> Create/Edit Incident </font></strong> 
 
 	<hr style="margin: 5px 0;">
 
@@ -38,8 +55,8 @@
 		<input type="hidden"  value= checked   id="publiclyVisible" {{ publiclyVisible }} checked />
 		<!--<input type="checkbox"      id="publiclyVisible"  {{#if publiclyVisible}}checked{{/if}}/> -->
 		
-		<strong>PNP Description</strong><br/>
-		<textarea class="span11"  id="description" placeholder="PNP description...">{{ description }}</textarea>
+		<strong>PNP Remarks</strong><br/>
+		<textarea class="span11"  id="description" placeholder="PNP Remarks...">{{ description }}</textarea>
 		
 		
 	</div>
@@ -65,27 +82,27 @@
 		    <button  class="btn btn-mini" id="fromNow">Now</button>
 		</div>
 
-		<!-- <div class="span6">
-			<strong>To</strong> 
-			<div class="input-append date" id="datepickerTo">
-			  <input class="span8" size="16" type="text" >
-			  <span class="add-on"><i class="icon-th"></i></span>
-			</div>
-
+		<!-- <div class="span6">  -->
+			<!--<strong>To</strong>  -->
+		
+			<!--<div class="input-append date" id="datepickerTo" >   -->
+			  <input class="span8" size="16" type="hidden" >
+			  <!--<span class="add-on"><i class="icon-th"></i></span> -->
+			<!--</div> -->
+  
 			
-			<div  class="input-append bootstrap-timepicker" >
-		        <input  class="span8"type="text" class="input-small" id="timepickerTo">
-		        <span class="add-on"><i class="icon-time"></i></span>
-		    </div>
+			<!--<div  class="input-append bootstrap-timepicker" > -->
+		     <!--   <input  class="span8"type="hidden" class="input-small" id="timepickerTo"> -->
+		        <!--<span class="add-on"><i class="icon-time"></i></span> 
+		    </div> -->
 
-		    <button  class="btn btn-mini" id="toNow">Now</button>
-		    <button  class="btn btn-mini" id="toClear">Clear</button>
-	    </div>
-	    -->
+		    <!--<button  class="btn btn-mini" id="toNow">Now</button>
+		    <button  class="btn btn-mini" id="toClear">Clear</button>--> 
+	    </div> 
 	</div>
     
 	<hr style="margin: 5px 0;">
-	<button  class="btn btn-primary" id="save">Save</button> <button class="btn" id="cancel">Cancel</button>
+	<button  class="btn btn-primary" id="save" onclick="notEmpty(document.getElementById('cite'), 'Pls Enter the CITE')">Save</button> <button class="btn" id="cancel">Cancel</button>
 
 </div>
 </script>
