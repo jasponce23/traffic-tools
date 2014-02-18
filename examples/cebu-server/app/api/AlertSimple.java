@@ -12,6 +12,7 @@ public class AlertSimple {
     public Long id;
 	public String type;
     public String title;
+    public String zipcode;
     public Date activeFrom;
     public Date activeTo;
     
@@ -24,7 +25,9 @@ public class AlertSimple {
 
     public String publicDescription;
     public String cite;
- public String address;
+    public String addressSt;
+    public String addressBrgy;
+    public String address;
    
     public String account;
 
@@ -47,8 +50,10 @@ public class AlertSimple {
         this.publicDescription = alert.publicDescription;
         this.publiclyVisible = alert.publiclyVisible;
         this.cite = alert.cite;
+        this.addressSt = alert.addressSt;
+        this.addressBrgy = alert.addressBrgy;
         this.address = alert.address;
-        
+        this.zipcode = alert.zipcode;
         
         if(shareAll) {
 	    	this.description = alert.description;

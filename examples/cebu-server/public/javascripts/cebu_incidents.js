@@ -144,6 +144,7 @@ function loadMessages(alertId)
 {
 	//var alertId = mEvent.target.alertData.id;
 
+
 	$.get('/citom/alertMessages', {id: alertId} , function(data){
 
 		incidentMarkers[alertId].alertData.messages = data;

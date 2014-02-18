@@ -71,10 +71,13 @@ public class Citom extends Controller {
 	@Before
     static void setConnectedUser() {
         if(Security.isConnected() && Security.check("citom")) {
-            renderArgs.put("user", Security.connected());
+            renderArgs.put("user", Security.connected()); 
+            
         }
         else
+                
         	Application.index();
+
     }
 	
 	public static void index() {
@@ -208,16 +211,20 @@ public class Citom extends Controller {
 				query = "%" +  query.toLowerCase() + "%";
 
 				if(type != null && !type.isEmpty())
-					alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and (activeFrom >= ? and (activeTo <= ? or activeTo is null)) and type = ?", query, query, query, from, to, type).fetch();
+					//jas alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and (activeFrom >= ? and (activeTo <= ? or activeTo is null)) and type = ?", query, query, query, from, to, type).fetch();
+				alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and (activeFrom >= ? and activeFrom <=?) and type = ?", query, query, query, from, to, type).fetch();
 				else
-					alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and (activeFrom >= ? and (activeTo <= ? or activeTo is null)) ", query, query, query, from, to).fetch();
+				//jas	alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and (activeFrom >= ? and (activeTo <= ? or activeTo is null)) ", query, query, query, from, to).fetch();
+				alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and (activeFrom >= ? and activeFrom <= ? ) ", query, query, query, from, to).fetch();
 			}
 			else
 			{
 				if(type != null && !type.isEmpty()) 
-					alerts = Alert.find("activeFrom >= ? and  (activeTo <= ? or activeTo is null) and type = ?", from, to, type).fetch();
+					//jas alerts = Alert.find("activeFrom >= ? and  (activeTo <= ? or activeTo is null) and type = ?", from, to, type).fetch();
+					alerts = Alert.find("activeFrom >= ? and  activeFrom <= ?  and type = ?", from, to, type).fetch();
 				else
-					alerts = Alert.find("activeFrom >= ? and  (activeTo <= ? or activeTo is null) ", from, to).fetch();
+					//jas alerts = Alert.find("activeFrom >= ? and  (activeTo <= ? or activeTo is null) ", from, to).fetch();
+				alerts = Alert.find("activeFrom >= ? and  activeFrom <= ?", from, to).fetch();
 			}
 		}
 
@@ -236,7 +243,8 @@ public class Citom extends Controller {
 			StringWriter csvString = new StringWriter();
 			CSVWriter csvWriter = new CSVWriter(csvString);
 			
-			String[] headerBase = "type, activeFrom, activeTo, user, description, publicDescription,  lat, lon".split(",");
+			//String[] headerBase = "type, activeFrom, activeTo, user, description, publicDescription,  lat, lon".split(",");
+			String[] headerBase = "Offense, Date/Time Committed, Cite Nr, City, Brief Description, Remarks, Latitude, Longitude ".split(",");
 			
 			csvWriter.writeNext(headerBase);
 			 
@@ -245,21 +253,19 @@ public class Citom extends Controller {
 				String[] dataFields = new String[8];
 				dataFields[0] = alert.type;
 				dataFields[1] = alert.activeFrom.toString();
-				if(alert.activeTo != null)
-					dataFields[2] = alert.activeTo.toString();
-				else
-					dataFields[2] = "";
-				dataFields[3] = alert.account.username;
+				dataFields[2] = alert.cite.toString();
+				dataFields[3] = alert.address.toString();
 				if(alert.description != null)
-					dataFields[4] = alert.description;
-				else
-					dataFields[4] = "";
-				if(alert.publicDescription != null)
-					dataFields[5] = alert.publicDescription;
+					dataFields[5] = alert.description;
 				else
 					dataFields[5] = "";
+				if(alert.publicDescription != null)
+					dataFields[4] = alert.publicDescription;
+				else
+					dataFields[4] = "";
 				dataFields[6] = alert.locationLat.toString();
 				dataFields[7] = alert.locationLon.toString();
+				//dataFields[8] = alert.account.username;
 				
 				csvWriter.writeNext(dataFields);
 				
@@ -279,7 +285,7 @@ public class Citom extends Controller {
 			
 			}
 			
-			response.setHeader("Content-Disposition", "attachment; filename=\"alert_data.csv\"");
+			response.setHeader("Content-Disposition", "attachment; filename=\"CrimeMapping_data.csv\"");
 			response.setHeader("Content-type", "text/csv");
 			
 			renderText(csvString);
@@ -464,7 +470,10 @@ public static void alertsCsv(Boolean active, String filter, String fromDate, Str
 			newAlert.locationLat = alert.locationLat;
 			newAlert.locationLon = alert.locationLon;
 			newAlert.cite = alert.cite;
+			newAlert.addressSt = alert.addressSt;  
+			newAlert.addressBrgy = alert.addressBrgy;  
 			newAlert.address = alert.address;  
+			newAlert.zipcode = alert.zipcode;  
 			newAlert.description = alert.description;
 			newAlert.publicDescription = alert.publicDescription;
 			newAlert.type = alert.type;
@@ -503,7 +512,10 @@ public static void alertsCsv(Boolean active, String filter, String fromDate, Str
 			
 			updatedAlert.locationLon = alert.locationLon;
 			updatedAlert.cite = alert.cite;
+			updatedAlert.addressSt = alert.addressSt;
+			updatedAlert.addressBrgy = alert.addressBrgy;
 			updatedAlert.address = alert.address;
+			updatedAlert.zipcode = alert.zipcode;
 			updatedAlert.description = alert.description;
 			updatedAlert.publicDescription = alert.publicDescription;
 			updatedAlert.type = alert.type;

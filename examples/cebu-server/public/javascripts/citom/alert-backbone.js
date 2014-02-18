@@ -1,8 +1,8 @@
 
 var AlertTypes = [
                   {id: 'Murder', name: 'Murder'},
-                {id: 'Homicide', name: 'Homicide'},
-                {id: 'Parricide', name: 'Parricide/Infanticide'},
+                  {id: 'Homicide', name: 'Homicide'},
+                  {id: 'Parricide', name: 'Parricide/Infanticide'},
                   {id: 'Physicalinjuries', name: 'Physical Injuries'}, 
                   {id: 'Kidnapping', name: 'Kidnapping'},
                   {id: 'Robbery', name: 'Robbery'},
@@ -11,7 +11,7 @@ var AlertTypes = [
                   {id: 'Firearms', name: 'Firearms - Illegal Possession'},
                   {id: 'Explosives', name: 'Explosives/Ammunitions- Illegal Possession'},
                   {id: 'Carnapping', name: 'Carnapping'},
-                   {id: 'Drugs', name: 'Prohibited Drugs'},
+                  {id: 'Drugs', name: 'Prohibited Drugs'},
                   {id: 'Others', name: 'Other crimes'}];
 
 Handlebars.registerHelper('alert_options', function(test) {
@@ -57,12 +57,15 @@ var Alert = Backbone.Model.extend({
       type: null,
       title: null,
       activeFrom: null,
-     // activeTo: null,
+      activeTo: null,
       publiclyVisible: null,
       locationLat: null,
       locationLon: null,
       cite: null,
+      addressSt: null,
+      addressBrgy: null,
       address: null,
+      zipcode: null,
       description: null,
       publicDescription: null,
       account: null
@@ -159,9 +162,8 @@ var AlertCollection =  Backbone.Collection.extend({
 
           }
 
-
-
     });  
+
 
 var AlertFilterView = Backbone.View.extend({
 
@@ -204,28 +206,28 @@ var AlertFilterView = Backbone.View.extend({
 
     today: function() {
       var now = moment();
-      //this.dateTo.datepicker('setDate', now.toDate());
+      this.dateTo.datepicker('setDate', now.toDate());
       this.dateFrom.datepicker('setDate', now.toDate());
 
     },
 
     yesterday: function() {
       var yesterday = moment().subtract('days', 1);
-      //this.dateTo.datepicker('setDate', yesterday.toDate());
+      this.dateTo.datepicker('setDate', yesterday.toDate());
       this.dateFrom.datepicker('setDate', yesterday.toDate());
     },
 
     thisWeek: function() {
       var now = moment();
       var week = moment().subtract('days', 7);
-      //this.dateTo.datepicker('setDate', now.toDate());
+      this.dateTo.datepicker('setDate', now.toDate());
       this.dateFrom.datepicker('setDate', week.toDate());
     },
 
     thisWeek: function() {
       var now = moment();
       var week = moment().subtract('days', 7);
-      //this.dateTo.datepicker('setDate', now.toDate());
+      this.dateTo.datepicker('setDate', now.toDate());
       this.dateFrom.datepicker('setDate', week.toDate());
     },
 
@@ -242,10 +244,10 @@ var AlertFilterView = Backbone.View.extend({
 
     updateFilter: function () {
       var fd = this.dateFrom.data('datepicker').date;
-      //var td = this.dateTo.data('datepicker').date;
+      var td = this.dateTo.data('datepicker').date;
 
       var fromTimestamp = moment(fd).format("MM/DD/YYYY");
-      //var toTimestamp = moment(td).format("MM/DD/YYYY");
+      var toTimestamp = moment(td).format("MM/DD/YYYY");
 
       var active;
       
@@ -257,7 +259,7 @@ var AlertFilterView = Backbone.View.extend({
       var data = {  type: this.$("#typeFilter").val(),
                     active: active,
                     fromDate: fromTimestamp,
-                 //   toDate: toTimestamp,
+                    toDate: toTimestamp,
                     query: this.$("#query").val()
       };
 
@@ -284,7 +286,7 @@ var AlertFilterView = Backbone.View.extend({
       }
 
       this.dateFrom =this.$("#dateFrom").datepicker({autoclose: true}).on('changeDate', function(ev) { view.dateFrom.datepicker("hide");});
-      //this.dateTo =this.$("#dateTo").datepicker({autoclose: true}).on('changeDate', function(ev) { view.dateTo.datepicker("hide");});
+      this.dateTo =this.$("#dateTo").datepicker({autoclose: true}).on('changeDate', function(ev) { view.dateTo.datepicker("hide");});
 
       this.today();
 
@@ -301,6 +303,8 @@ var AlertFilterView = Backbone.View.extend({
     }
 
   });
+
+
 
 var AlertEditorView = Backbone.View.extend({
 
@@ -350,17 +354,15 @@ var AlertEditorView = Backbone.View.extend({
       this.dateFrom.datepicker('setDate', this.model.attributes.activeFrom.toDate());
       this.timeFrom.timepicker('setTime', this.model.attributes.activeFrom.format('h:mm a'));
 
-      //if(this.model.attributes.activeTo) {
-      //  this.dateTo.datepicker('setDate', this.model.attributes.activeTo.toDate());
-      //  this.timeTo.timepicker('setTime', this.model.attributes.activeTo.format('h:mm a'));
-     // }
-     // else {
-     //   this.toClear();
-     // }
+      if(this.model.attributes.activeTo) {
+        this.dateTo.datepicker('setDate', this.model.attributes.activeTo.toDate());
+        this.timeTo.timepicker('setTime', this.model.attributes.activeTo.format('h:mm a'));
+      }
+      else {
+        this.toClear();
+      }
 
-      
-      
-
+     
       this.showPanel();
     },
 
@@ -380,29 +382,29 @@ var AlertEditorView = Backbone.View.extend({
     save: function() {
 
       var fd = this.dateFrom.data('datepicker').date;
-      //var td = this.dateTo.data('datepicker').date;
+      var td = this.dateTo.data('datepicker').date;
 
 
       var ftHour = this.timeFrom.data('timepicker').hour;
       var ftMinute = this.timeFrom.data('timepicker').minute;
       var ftMeridian = this.timeFrom.data('timepicker').meridian;
 
-      //var ttHour = this.timeTo.data('timepicker').hour;
-      //var ttMinute = this.timeTo.data('timepicker').minute;
-      //var ttMeridian = this.timeTo.data('timepicker').meridian;
+      var ttHour = this.timeTo.data('timepicker').hour;
+      var ttMinute = this.timeTo.data('timepicker').minute;
+      var ttMeridian = this.timeTo.data('timepicker').meridian;
 
       var fromTimestamp = moment(moment(fd).format("YYYY-MM-DD") + " " + ftHour + ":" + ftMinute + " " + ftMeridian, "YYYY-MM-DD hh:mm a");
 
-      //var toTimestamp; 
+      var toTimestamp; 
 
-      //if(this.$("#datepickerTo input").val() != "" || this.$("#timepickerTo").val() != "" )
-      //{
-      //  toTimestamp = moment(moment(td).format("YYYY-MM-DD") + " " + ttHour + ":" + ttMinute + " " + ttMeridian, "YYYY-MM-DD hh:mm a");
-      //}
-      //else
-      //{
-       // toTimestamp = null;
-     // }
+      if(this.$("#datepickerTo input").val() != "" || this.$("#timepickerTo").val() != "" )
+      {
+        toTimestamp = moment(moment(td).format("YYYY-MM-DD") + " " + ttHour + ":" + ttMinute + " " + ttMeridian, "YYYY-MM-DD hh:mm a");
+      }
+      else
+      {
+       toTimestamp = null;
+      }
 
       var data = {  type: this.$("#type").val(),
                     title: this.$("#title").val(),
@@ -412,7 +414,10 @@ var AlertEditorView = Backbone.View.extend({
                     locationLat: this.model.attributes.locationLat,
                     locationLon: this.model.attributes.locationLon,
                     cite: this.$("#cite").val(),
+                    addressSt: this.$("#addressSt").val(),
+                    addressBrgy: this.$("#addressBrgy").val(),
                     address: this.$("#address").val(),
+                    zipcode: this.$("#zipcode").val(),
                     description: this.$("#description").val(),
                     publicDescription: this.$("#publicDescription").val()
       };
@@ -470,14 +475,14 @@ var AlertEditorView = Backbone.View.extend({
     },
 
     toNow: function() {
-     // var now = new Date();
-     // this.dateTo.datepicker('setDate', now);
-     // this.timeTo.timepicker('setTime', moment(now).format('h:mm a'));
+      var now = new Date();
+      this.dateTo.datepicker('setDate', now);
+      this.timeTo.timepicker('setTime', moment(now).format('h:mm a'));
     },
 
     toClear: function() {
-     // this.$("#datepickerTo input").val("")
-     // this.timeTo.val("");
+      this.$("#datepickerTo input").val("")
+      this.timeTo.val("");
     },
 
     fromNow: function() {
@@ -529,7 +534,6 @@ var AlertEditorView = Backbone.View.extend({
     distroyDropdowns: function() {
 
       // annoying cleanup of dropdowns bound to the popup view.
-
       if(this.dropdown)
         this.dropdown.select2("close");
       if(this.dateFrom)
@@ -668,9 +672,10 @@ var AlertMapView = Backbone.View.extend({
 
       if(!this.publicOnly) {
     	  this.editor = new AlertEditorView({map: this.map, collection: this.collection});
-          this.filter = new AlertFilterView({collection: this.collection});  
+          
       }
       
+      this.filter = new AlertFilterView({collection: this.collection});  
 
       //this.updateAlerts();
 
@@ -678,6 +683,7 @@ var AlertMapView = Backbone.View.extend({
 
       _.bindAll(this, 'openPopup', 'addIncident');
 
+      
 
     },
     

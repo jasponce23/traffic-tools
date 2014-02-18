@@ -47,7 +47,7 @@
 
 	<div class="navbar navbar-inverse navbar-fixed-top" id="header">
       <div class="navbar-inner">
-      	<a class="brand" href="/"><img style="margin-left: 10px;" src="/public/images/website_logo.png"/>&nbsp;PNP Crime Mapping</a>
+      	<a class="brand" href="/"><img style="margin-left: 10px;" height=30px weight= 25px src="/public/images/website_logo.png"/>&nbsp;PNP Crime Mapping</a>
         <div class="nav-collapse collapse">
         
         
@@ -73,15 +73,17 @@
           <div class="nav-collapse">
          
             <ul class="nav">
-            	
-            	<li #{if page == 'index'}class="active"#{/if}><a href="@{Application.index}">Current Alerts</a></li>
+            
+           	<li #{if page == 'index'}class="active"#{/if}><a href="@{Application.index}">Current Alerts</a></li>
+                	
+	   			
             
 	           	#{secure.check 'citom'}
 	            	<li class="dropdown#{if page == 'citom'} active#{/if}">
 	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mapping<b class="caret"></b></a>
 	            		<ul class="dropdown-menu">
 	            			<li><a href="@{Citom.incidents}">Incident Entry</a></li>
-	     		 			<!--   		 			<li><a href="@{Citom.journey}">Journey Time Analysis</a></li>
+	     		 			<!--   	<li><a href="@{Citom.journey}">Journey Time Analysis</a></li>
 	     		 			<li><a href="@{Citom.conditions}">Current Traffic Conditions</a></li> 
 	     		 		-->
 
@@ -108,7 +110,9 @@
 	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
 	            		<ul class="dropdown-menu">
 	            			<li><a href="@{Admin.accounts}">Account Management</a></li>	
-	            			<li><a href="@{Admin.systemStatus}">System Status</a></li>		            		 
+	            			<!--
+	            			<li><a href="@{Admin.systemStatus}">System Status</a></li>	
+	            			-->		            		 
 	    				</ul>
 	    			</li>
 	            #{/secure.check}

@@ -13,6 +13,7 @@ public class Alert extends Model {
 	
     public String type;
     public String title;
+    public String zipcode;
     public Date activeFrom;
     public Date activeTo;
     
@@ -29,6 +30,12 @@ public class Alert extends Model {
 
     @Column(columnDefinition="TEXT")
     public String publicDescription;
+    
+    @Column(columnDefinition="TEXT")
+    public String addressSt;
+    
+    @Column(columnDefinition="TEXT")
+    public String addressBrgy;
     
     @Column(columnDefinition="TEXT")
     public String address;

@@ -218,13 +218,15 @@ public class Account extends Model {
     	String hashedPassword = Account.hash(password); 
     	Account user = Account.find("username = ? and password = ?", username, hashedPassword).first();
     	
-    	if(user != null && user.active)
-    	{
-    		user.login();
-    		return true;
-    	}
-    	else
-    		return false;
+
+    
+        if(user != null && user.active)
+        {
+            user.login();
+            return true;
+        }
+       else
+            return false;
     
     }
     
