@@ -92,6 +92,8 @@ public class Api extends Controller {
 	return longList;
 	}
 
+
+/*
 	public static void alerts(String imei, String type, String ids) {
 	
 		List<Alert> alerts = null;
@@ -99,6 +101,9 @@ public class Api extends Controller {
 		
 		Date now = new Date();
 		
+
+		
+
 		if(imei != null && !imei.isEmpty()){
 			Phone phone = Phone.find("imei = ?", imei).first();
 			if(phone != null && phone.operator != null && phone.operator.name.equals("CITOM")) {
@@ -110,6 +115,23 @@ public class Api extends Controller {
 		
 		ArrayList<AlertSimple> data = new ArrayList<AlertSimple>();
 		
+		   if(type.equals("")) {
+                alerts = Alert.find("activeFrom <= ? and (activeTo is null or activeTo >= ?) and publiclyVisible = true", now, now).fetch();
+				for(Alert alert : alerts)
+				{
+					data.add(new AlertSimple(alert, false));
+				}
+            }
+            else {
+                alerts = Alert.find("type = ? and activeFrom <= ? and (activeTo is null or activeTo >= ?) and publiclyVisible = true", type, now, now).fetch();
+				
+				for(Alert alert : alerts)
+				{
+					data.add(new AlertSimple(alert, true));
+				}
+            }
+
+
 		if(showPublicAlertsOnly){
 			alerts = Alert.find("activeFrom <= ? and (activeTo is null or activeTo >= ?) and publiclyVisible = true", now, now).fetch();
 			
@@ -139,6 +161,85 @@ public class Api extends Controller {
 	}
 	
 
+	*/
+
+
+public static void alerts(String fromDate, String toDate, String type, String query, Boolean active) {
+		
+		List<Alert> alerts = null;
+		
+		Date from = new Date();
+		Date to = new Date();
+		
+		
+		
+		try
+		{
+			from = DateUtils.parseDisplay(fromDate + " 00:00:01");
+			to = DateUtils.parseDisplay(toDate + " 23:59:59");
+		}
+		catch(Exception e)
+		{
+			Logger.info(e.toString());
+		}
+		
+		if(active != null && active)
+		{
+			if(query != null && !query.isEmpty())
+			{
+				query = "%" +  query.toLowerCase() + "%";
+
+				if(type != null && !type.isEmpty())
+					alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and activeTo is null and type = ?", query, query, query, type).fetch();
+				else
+					alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and activeTo is null ", query, query, query).fetch();
+			}
+			else
+			{
+				if(type != null && !type.isEmpty()) 
+					alerts = Alert.find("activeTo is null  and type = ?", type).fetch();
+				else
+					alerts = Alert.find("activeTo is null").fetch();
+			}
+		}
+		else
+		{
+			if(query != null && !query.isEmpty())
+			{
+				query = "%" +  query.toLowerCase() + "%";
+
+				if(type != null && !type.isEmpty())
+					//jas alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and (activeFrom >= ? and (activeTo <= ? or activeTo is null)) and type = ?", query, query, query, from, to, type).fetch();
+				alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and (activeFrom >= ? and activeFrom <=?) and type = ?", query, query, query, from, to, type).fetch();
+				else
+				//jas	alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and (activeFrom >= ? and (activeTo <= ? or activeTo is null)) ", query, query, query, from, to).fetch();
+				alerts = Alert.find("(lower(description) like ? or lower(publicdescription) like ? or lower(title) like ?) and (activeFrom >= ? and activeFrom <= ? ) ", query, query, query, from, to).fetch();
+			}
+			else
+			{
+				if(type != null && !type.isEmpty()) 
+					//jas alerts = Alert.find("activeFrom >= ? and  (activeTo <= ? or activeTo is null) and type = ?", from, to, type).fetch();
+					alerts = Alert.find("activeFrom >= ? and  activeFrom <= ?  and type = ?", from, to, type).fetch();
+				else
+					//jas alerts = Alert.find("activeFrom >= ? and  (activeTo <= ? or activeTo is null) ", from, to).fetch();
+				alerts = Alert.find("activeFrom >= ? and  activeFrom <= ?", from, to).fetch();
+			}
+		}
+
+		ArrayList<AlertSimple> data = new ArrayList<AlertSimple>();
+
+		for(Alert alert : alerts)
+		{
+			data.add(new AlertSimple(alert, true));
+		}
+	
+		if(request.format == "xml")
+			renderXml(data);
+		else
+			renderJSON(data);
+	
+
+	}
 	
 	
 	public static void messages(String imei, Long message_id, Double lat, Double lon, String content) {
