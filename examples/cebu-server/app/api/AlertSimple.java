@@ -57,7 +57,7 @@ public class AlertSimple {
         
         if(shareAll) {
 	    	this.description = alert.description;
-	       
+	        
 	        this.account = alert.account.username;
 	
 	        List<AlertMessage> messageList = AlertMessage.find("alert = ?", alert).fetch();

@@ -10,10 +10,12 @@
 	<h3><img src="/public/images/alert_icons/{{ type }}.png"> {{ title }}</h3>	
 	<strong>Cite Nr:</strong> {{cite}}<br/>
 	<strong>Offense:</strong> {{alertType type}}<br/>
+	<!--<strong>Publicly Visible:</strong> {{#if publiclyVisible}}Yes{{else}}No{{/if}}<br/> -->
 	<strong>Address:</strong> {{addressSt}} <strong> </strong> {{addressBrgy}}
 	<strong> </strong> {{address}} <strong> </strong> {{zipcode}}<br/>
 	<strong>Brief Description:</strong> {{publicDescription}}<br/>
-	<strong>Date/Time Committed:</strong> {{formatDate activefrom}}<br/>
+	<strong>Officer on Case:</strong> {{description}}<br/>
+	<!--<strong>Date/Time Committed:</strong> {{activeFrom}}<br/>-->
 		
 </div>
 </script>
@@ -42,8 +44,8 @@
 		<div class="row-fluid">
 		<strong>Offense</strong><br/>
 		<select id="typeFilter" style="width:220px;">
-			<option value="" selected="selected">All Types</option>
-			{{alert_options type}}
+			<option selected="selected" value="" placeholder ="All Types">All Types</option>
+			<option> {{alert_options type}} </option>
 		</select>
 		</div>
 

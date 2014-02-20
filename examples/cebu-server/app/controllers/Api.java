@@ -172,7 +172,6 @@ public static void alerts(String fromDate, String toDate, String type, String qu
 		Date to = new Date();
 		
 		
-		
 		try
 		{
 			from = DateUtils.parseDisplay(fromDate + " 00:00:01");
@@ -183,6 +182,7 @@ public static void alerts(String fromDate, String toDate, String type, String qu
 			Logger.info(e.toString());
 		}
 		
+
 		if(active != null && active)
 		{
 			if(query != null && !query.isEmpty())

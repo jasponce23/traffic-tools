@@ -7,63 +7,63 @@ var overlays = new L.LayerGroup();
 var newMarker = null;
 
 var murderIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/murder.png',
+	iconUrl: '/public/images/alert_icons/murder.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
 var homicideIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/homicide.png',
+	iconUrl: '/public/images/alert_icons/homicide.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
 var parricideIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/closedroad.png',
+	iconUrl: '/public/images/alert_icons/parricide.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
 var physicalinjuriesIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/physicalinjuries.png',
+	iconUrl: '/public/images/alert_icons/Physicalinjuries.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
 var kidnappingIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/kidnapping.png',
+	iconUrl: '/public/images/alert_icons/kidnapping.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
 var robberyIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/robbery.png',
+	iconUrl: '/public/images/alert_icons/robbery.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
 var theftIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/trafficlight.png',
+	iconUrl: '/public/images/alert_icons/theft.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
 var rapeIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/rape.png',
+	iconUrl: '/public/images/alert_icons/rape.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 
 var firearmsIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/firearms.png',
+	iconUrl: '/public/images/alert_icons/firearms.png',
 	iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
@@ -71,25 +71,25 @@ var firearmsIcon = L.icon({
 
 
 var explosivesIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/explosives.png',
+	iconUrl: '/public/images/alert_icons/explosives.png',
     iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 var carnappingIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/carnapping.png',
+	iconUrl: '/public/images/alert_icons/carnapping.png',
     iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 var drugsIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/drugs.png',
+	iconUrl: '/public/images/alert_icons/drugs.png',
     iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
 var othersIcon = L.icon({
-	iconUrl: '/public/images/crime_mapping_icons/others.png',
+	iconUrl: '/public/images/alert_icons/others.png',
     iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]

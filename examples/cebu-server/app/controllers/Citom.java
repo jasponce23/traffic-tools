@@ -253,16 +253,25 @@ public class Citom extends Controller {
 				String[] dataFields = new String[8];
 				dataFields[0] = alert.type;
 				dataFields[1] = alert.activeFrom.toString();
-				dataFields[2] = alert.cite.toString();
-				dataFields[3] = alert.address.toString();
+				if(alert.cite != null)
+					dataFields[2] = alert.cite.toString();
+				else
+					dataFields[2] = "";
+				if(alert.address != null)
+					dataFields[3] = alert.address.toString();
+				else
+					dataFields[3] = "";
+				
 				if(alert.description != null)
 					dataFields[5] = alert.description;
 				else
 					dataFields[5] = "";
+				
 				if(alert.publicDescription != null)
 					dataFields[4] = alert.publicDescription;
 				else
 					dataFields[4] = "";
+				
 				dataFields[6] = alert.locationLat.toString();
 				dataFields[7] = alert.locationLon.toString();
 				//dataFields[8] = alert.account.username;
