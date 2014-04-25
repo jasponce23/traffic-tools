@@ -42,7 +42,7 @@ function isAlphanumeric(elem, helperMsg){
 		</select>
 		</br></br>
 		
-		<strong>Address</strong><br/>
+		<strong>Place of Occurence</strong><br/>
 		<input class="span11" type="text" id="addressSt" value="{{addressSt}}" placeholder="Nr & Street..."/> 
 		<input class="span11" type="text" id="addressBrgy" value="{{addressBrgy}}" placeholder="Brgy..."/>
 		<input class="span11" type="text" id="address" value="{{address}}" placeholder="City..."/>
@@ -51,7 +51,7 @@ function isAlphanumeric(elem, helperMsg){
 		
 		<!--<textarea class="span11"  id="address" placeholder="address...">{{ address }}</textarea>
 		-->
-		<strong>Brief Description</strong><br/>
+		<strong>Modus</strong><br/>
 		<textarea class="span11" id="publicDescription" placeholder="Brief description...">{{ publicDescription }}</textarea> 
 
 		<!--<strong>Publicly Visible</strong>  -->
@@ -123,9 +123,9 @@ function isAlphanumeric(elem, helperMsg){
 	<strong>Cite Nr:</strong> {{cite}}<br/>
 	<strong>Offense:</strong> {{alertType type}}<br/>
 	<!--<strong>Publicly Visible:</strong> {{#if publiclyVisible}}Yes{{else}}No{{/if}}<br/> -->
-	<strong>Address:</strong> {{addressSt}} <strong> </strong> {{addressBrgy}}
+	<strong>Place of Occurence:</strong> {{addressSt}} <strong> </strong> {{addressBrgy}}
 	<strong> </strong> {{address}} <strong> </strong> {{zipcode}}<br/>
-	<strong>Brief Description:</strong> {{publicDescription}}<br/>
+	<strong>Modus:</strong> {{publicDescription}}<br/>
 	<strong>Officer on Case:</strong> {{description}}<br/>
 	<strong>Date/Time Committed:</strong> {{formatDate activeFrom }}<br/>
 	<!--<strong>Active To:</strong> {{formatDate activeTo }}<br/> -->

@@ -244,7 +244,7 @@ public class Citom extends Controller {
 			CSVWriter csvWriter = new CSVWriter(csvString);
 			
 			//String[] headerBase = "type, activeFrom, activeTo, user, description, publicDescription,  lat, lon".split(",");
-			String[] headerBase = "Offense, Date/Time Committed, Cite Nr, City, Brief Description, Remarks, Latitude, Longitude ".split(",");
+			String[] headerBase = "Offense, Date/Time Committed, Cite Nr, City, Modus, Officer on Case, Latitude, Longitude ".split(",");
 			
 			csvWriter.writeNext(headerBase);
 			 
